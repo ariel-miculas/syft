@@ -8,7 +8,13 @@ import (
 	"strings"
 
 	"github.com/anchore/syft/syft/source"
+	"github.com/anchore/syft/syft/file"
+	"github.com/anchore/syft/syft/internal/fileresolver"
 )
+
+func NewFromUnindexedDirectory(dir string) file.WritableResolver {
+	return fileresolver.NewFromUnindexedDirectory(dir)
+}
 
 // GetSource uses all of Syft's known source providers to attempt to resolve the user input to a usable source.Source
 func GetSource(ctx context.Context, userInput string, cfg *GetSourceConfig) (source.Source, error) {
